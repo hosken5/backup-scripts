@@ -4,6 +4,7 @@
 
 historyDir=~/test/
 today=$(date +%Y-%m-%d)
+
 echo "---------today is $today-----------"
 tt=`date -d "-10 day" +%Y-%m-%d`
 echo "next is to delete release before $tt"

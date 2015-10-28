@@ -1,52 +1,67 @@
 #!/usr/bin/env bash
 
-mkdir  -p ~/tmp/run/admin/run0
+mkdir  -p ~/backup/prod/run/admin/run0
 
-mkdir  -p ~/tmp/run/admin/run1
+mkdir  -p ~/backup/prod/run/admin/run1
 
-mkdir  -p ~/tmp/run/site/run0
+mkdir  -p ~/backup/prod/run/site/run0
 
-mkdir  -p ~/tmp/run/site/run1
+mkdir  -p ~/backup/prod/run/site/run1
 
-mkdir  -p ~/tmp/run/msite/run0
+mkdir  -p ~/backup/prod/run/msite/run0
 
-mkdir  -p ~/tmp/run/msite/run1
+mkdir  -p ~/backup/prod/run/msite/run1
 
-scp -r kitt@kitta:~/run/admin/run0/*   ~/tmp/run/admin/run0
+scp -r kitt@kitta:~/run/admin/run0/*   ~/backup/prod/run/admin/run0
 
-if [ $? == 1 ]
+if [ $? != 0 ]
+  then
+ exit 1 ;
+fi
+
+echo "/home/kitt/script/delete_log_admin_run0.sh" | ssh kitt@kitta
+
+
+
+scp -r kitt@kitta:~/run/admin/run1/*   ~/backup/prod/run/admin/run1
+
+if [ $? != 0 ]
   then
  exit 1 ;
 fi
 
 
-scp -r kitt@kitta:~/run/admin/run1/*   ~/tmp/run/admin/run1
+echo "/home/kitt/script/delete_log_admin_run1.sh" | ssh kitt@kitta
 
-if [ $? == 1 ]
+
+scp -r kitt@kitta:~/run/site/run0/*   ~/backup/prod/run/site/run0
+if [ $? != 0 ]
   then
  exit 1 ;
 fi
 
-scp -r kitt@kitta:~/run/site/run0/*   ~/tmp/run/site/run0
-if [ $? == 1 ]
+echo "/home/kitt/script/delete_log_site_run0.sh" | ssh kitt@kitta
+
+
+scp -r kitt@kitta:~/run/site/run1/*   ~/backup/prod/run/site/run1
+if [ $? != 0 ]
+  then
+ exit 1 ;
+fi
+echo "/home/kitt/script/delete_log_site_run1.sh" | ssh kitt@kitta
+
+scp -r kitt@kitta:~/run/msite/run0/*   ~/backup/prod/run/msite/run0
+if [ $? != 0 ]
   then
  exit 1 ;
 fi
 
-scp -r kitt@kitta:~/run/site/run1/*   ~/tmp/run/site/run1
-if [ $? == 1 ]
-  then
- exit 1 ;
-fi
+echo "/home/kitt/script/delete_log_msite_run0.sh" | ssh kitt@kitta
 
-scp -r kitt@kitta:~/run/msite/run0/*   ~/tmp/run/msite/run0
-if [ $? == 1 ]
-  then
- exit 1 ;
-fi
 
-scp -r kitt@kitta:~/run/msite/run1/*   ~/tmp/run/msite/run1
-if [ $? == 1 ]
+scp -r kitt@kitta:~/run/msite/run1/*   ~/backup/prod/run/msite/run1
+if [ $? != 0 ]
   then
  exit 1 ;
 fi
+echo "/home/kitt/script/delete_log_msite_run1.sh" | ssh kitt@kitta
