@@ -12,8 +12,8 @@ tt1=`date -d $tt +%s`  #小于此数值的文件夹删掉
 #echo $tt1
 for file in ${logDir}*
 do
-    echo $file
-    if test -d $file
+    #echo $file
+    if test -f $file
         then
         name=`basename $file`       #admin_run0_2015-07-23.log
         name1=${name#admin_run0_}   #2015-07-23.log
@@ -25,6 +25,8 @@ do
             then
                 echo " delete $name-------"
                 rm -rf ${logDir}${name}
+            else
+                echo "preserve $name------"
         fi
     fi
 done
