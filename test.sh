@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-mkdir  -p ~/tmp/run/admin/run0
+fileName=`basename /home/kitt/run/admin/run0/logs/admin_run0_2015-07-23.log`
 
-scp -r kitt@kitta:~/run/admin/run0/*   ~/tmp/run/admin/run0
+fileName1=${fileName#admin_run0_}
+fileName2=${fileName1%.*}
 
-if [ $? == 1 ]
-  then
- exit 1 ;
-fi
-
-echo 'after transfer'
+echo ${fileName2}
