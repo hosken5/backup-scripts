@@ -23,7 +23,7 @@ do
         curr=`date -d $name2 +%s`
         if [ $curr -le $tt1 ]
             then
-                echo " delete $name-------"
+                echo "delete $name-------"
                 rm -rf ${logDir}${name}
             else
                 echo "preserve $name------"
