@@ -2,7 +2,9 @@
 
 mkdir  -p ~/backup/prod/source
 
-scp -r kitt@kitta:~/source/*   ~/backup/prod/source
+
+rsync -azrP --exclude ''  kitt@kitta:~/source/20151020-152521  ~/backup/prod/source/
+#rsync -azrP --exclude ''  kitt@kittc:~/source/20151020-152521  ~/backup/prod/source/
 
 if [ $? != 0 ]
   then
