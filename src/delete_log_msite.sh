@@ -5,7 +5,7 @@ today=$(date +%Y-%m-%d)
 
 echo "---------today is $today-----------"
 tt=`date -d "-7 day" +%Y-%m-%d`
-echo "next is to delete release before $tt"
+echo "next is to delete msitelogs before $tt"
 tt1=`date -d $tt +%s`  #小于此数值的文件夹删掉
 #echo $tt1
 for file in ${logDir}*
