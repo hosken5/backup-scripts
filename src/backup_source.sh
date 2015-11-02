@@ -3,7 +3,7 @@
 mkdir  -p ~/backup/prod/source
 
 
-rsync -azrP --exclude ''  kitt@kitta:~/source/20151020-152521  ~/backup/prod/source/
+rsync -azrlP --exclude ''  kitt@kittc:~/source/  ~/backup/prod/source/
 #rsync -azrP --exclude ''  kitt@kittc:~/source/20151020-152521  ~/backup/prod/source/
 
 if [ $? != 0 ]
@@ -11,4 +11,6 @@ if [ $? != 0 ]
  exit 1 ;
 fi
 
-echo "/home/kitt/script/delete_source.sh" | ssh kitt@kitta
+scp ./delete_source.sh   kitt@kittc:~/script/
+
+ssh kitt@kittc sh  ~/script/delete_source.sh

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #删除若干天的数据
 
-logDir=/home/kitt/source2/
+logDir=/home/kitt/source/
 
 today=$(date +%Y-%m-%d)
 
